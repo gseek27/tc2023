@@ -28,5 +28,9 @@ export default {
 <style scoped>
 .tweet-post {
   margin-bottom: 80px; /* adjust as needed */
+  border: 1px solid #e0e0e0;  /* You can adjust the color and thickness as you like */
+  padding: 10px;              /* Add some padding inside the border for better appearance */
+  margin-bottom: 10px;        /* Add some space between posts if you have multiple posts in a list */
+  border-radius: 5px;    
 }
 </style>
