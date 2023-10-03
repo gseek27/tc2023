@@ -1,0 +1,14 @@
+{
+  "hosting": {
+    "predeploy": "npm run build",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  },
+    "storage": {
+      "rules": "storage.rules"
+    }
+}
