@@ -19,8 +19,8 @@ export default {
   data: () => ({
     menuItems: [
       { title: "Home", link: "/" },
-      { title: "Login", link: "/login" },
-      { title: "Profile", link: "/profile" }
+      { title: "Profile", link: "/profile" },
+       { title: "Login", link: "/login" }
     ]
   })
 }

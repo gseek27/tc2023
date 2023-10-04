@@ -7,21 +7,6 @@
       <button type="submit">Login</button>
     </form>
   </div>
-
-
-    <div>
-        <h2>Happening now</h2>
-        <h3>Join today.</h3>
-        <button id="googleSignIn">Sign up with Google</button>
-        <p>or</p>
-        <form id="emailSignIn">
-            <input type="email" placeholder="Email" required>
-            <input type="password" placeholder="Password" required>
-            <button type="submit">Create account</button>
-        </form>
-        <p>By signing up, you agree to the Terms of Service and Privacy Policy, including Cookie Use.</p>
-        <p>Already have an account? <a href="#">Sign in</a></p>
-    </div>
 </template>
 
 <script>
@@ -40,8 +25,6 @@ export default {
     }
   }
 }
-
-
 </script>
 
 
