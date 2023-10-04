@@ -1,19 +1,27 @@
 <template>
-  <v-list>
-    <v-list-item v-for="item in menuItems" :key="item" link>
-      <v-list-item-content>
-        <v-list-item-title>{{ item }}</v-list-item-title>
-      </v-list-item-content>
-    </v-list-item>
+  <v-list> 
+    <div> 
+      <nav>
+        <router-link :to="item.link" v-for="item in menuItems" :key="item.title">
+          <v-list-item link>
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </router-link>
+      </nav>
+    </div>
   </v-list>
 </template>
 
 <script>
 export default {
   data: () => ({
-  //  menuItems: ["Home", "Explore", "Notifications", "Messages", "Lists", "Communities", "Verified Orgs", "Profile", "Bookmarks", "Top Articles"]
-      menuItems: ["Home", "Explore", "Notifications", "Messages", "Profile", "Bookmarks"]
-
+    menuItems: [
+      { title: "Home", link: "/" },
+      { title: "Login", link: "/login" },
+      { title: "Profile", link: "/profile" }
+    ]
   })
 }
 </script>

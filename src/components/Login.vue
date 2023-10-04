@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-</head>
-<body>
+<template>
+  <div>
+    <h1>Login Page</h1>
+    <form @submit.prevent="handleLogin">
+      <input v-model="username" placeholder="Username" required />
+      <input type="password" v-model="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+
     <div>
         <h2>Happening now</h2>
         <h3>Join today.</h3>
@@ -19,28 +22,29 @@
         <p>By signing up, you agree to the Terms of Service and Privacy Policy, including Cookie Use.</p>
         <p>Already have an account? <a href="#">Sign in</a></p>
     </div>
-
-    <!-- JavaScript Libraries -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-</body>
-</html>
-
-
+</template>
 
 <script>
-document.getElementById("googleSignIn").addEventListener("click", function() {
-    // Use Google's OAuth2.0 authentication here.
-});
+export default {
+  name: 'LoginPage',
+  data() {
+    return {
+      username: '',
+      password: ''
+    };
+  },
+  methods: {
+    handleLogin() {
+      // Handle the login logic here
+      console.log('User tried to log in with', this.username, this.password);
+    }
+  }
+}
 
-document.getElementById("appleSignIn").addEventListener("click", function() {
-    // Implement Apple's sign in method here.
-});
 
-document.getElementById("emailSignIn").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const email = event.target[0].value;
-    const password = event.target[1].value;
-    // Use these details to authenticate with your backend server.
-});
 </script>
+
+
+<style scoped>
+/* Any styles specific to the Login component can be added here */
+</style>

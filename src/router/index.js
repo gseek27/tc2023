@@ -1,30 +1,31 @@
-import Vue from 'vue';
-import Router from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 
-import Home from './components/Home.vue';
-import Profile from './components/Profile.vue';
-import Login from './components/Login.vue';
+import HomePage from '../components/Home.vue';
+import ProfilePage from '../components/Profile.vue';
+import LoginPage from '../components/Login.vue';
 
-Vue.use(Router);
 
-export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
+const routes = [
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: HomePage
     },
     {
       path: '/profile',
       name: 'profile',
-      component: Profile
+      component: ProfilePage
     },
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: LoginPage
     }
-  ]
-});
+  ];
+  
+  const router = createRouter({
+    history: createWebHistory(process.env.BASE_URL),
+    routes
+  });
+  
+  export default router;
