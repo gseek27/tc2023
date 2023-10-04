@@ -68,6 +68,8 @@ export default {
         }
         this.tweetContent = ""; // clear the textarea after posting
         this.tweetImage = null;
+        this.$emit('tweetPosted');
+        this.fetchTweets(); 
       } catch (error) {
         console.error("Error posting tweet:", error);
       }

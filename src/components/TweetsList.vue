@@ -1,54 +1,42 @@
 <template>
   <div>
     <div v-for="tweet in sortedTweets" :key="tweet.id">
-      {{ console.log(tweet) }}
       <TweetPost v-if="tweet.content" :tweetData="tweet" @tweetDeleted="handleTweetDeleted" />
     </div>
   </div>
 </template>
 
 <script>
-import { ref, onMounted, computed } from 'vue';
-//import { ref, onMounted } from 'vue';
-import TweetPost from './TweetPost.vue'; // Assuming tweet.vue is in the same directory
-import { getFirestore, collection, getDocs, orderBy, query } from 'firebase/firestore';
+import { computed } from 'vue';
+import TweetPost from './TweetPost.vue';
 
 export default {
   name: 'TweetsList',
   components: {
     TweetPost
   },
-  setup() {
-    const tweets = ref([]);
-
-    onMounted(async () => {
-      const db = getFirestore();
-      const tweetsCollection = collection(db, 'tweets');
-      const tweetsQuery = query(tweetsCollection, orderBy('timestamp', 'desc')); // Sorting by timestamp in descending order
-      const tweetDocs = await getDocs(tweetsQuery);
-      tweets.value = tweetDocs.docs.map(doc => {
-        return {
-          id: doc.id,
-          ...doc.data()
-        }
-      });
-    });
-
-const sortedTweets = computed(() => {
-  return [...tweets.value].sort((a, b) => b.timestamp - a.timestamp);
-});
-
-
-    return {
-      sortedTweets,
-      tweets
+  props: {
+    tweets: {
+      type: Array,
+      required: true,
+      default: () => []
     }
   },
-  methods: {
-  handleTweetDeleted(tweetId) {
-    this.tweets = this.tweets.filter(tweet => tweet.id !== tweetId);
-  }
+  setup(props) {
+        console.log("Tweets prop in TweetsList:", props.tweets);
+    const sortedTweets = computed(() => {
+      return [...props.tweets].sort((a, b) => b.timestamp - a.timestamp);
+    });
 
+    return {
+      sortedTweets
+    };
+  },
+  methods: {
+    handleTweetDeleted(tweetId) {
+      // Emitting an event so parent component can handle it
+      this.$emit('removeTweet', tweetId);
+    }
   }
 };
 </script>
