@@ -17,6 +17,7 @@
     "firebase": "^10.4.0",
     "roboto-fontface": "*",
     "vue": "^3.2.36",
+    "vue-router": "^4.2.5",
     "vuetify": "^3.3.19",
     "webfontloader": "^1.0.0"
   },
