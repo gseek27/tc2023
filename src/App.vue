@@ -7,7 +7,7 @@
       </v-col>
       <v-col cols="9">
         <TweetBox />
-        <TweetPost v-for="tweet in sampleTweets" :key="tweet.username" v-bind="tweet" />
+        <TweetPost />
         <TweetsList />
         <TrendingPosts :topics="trendingTopics" />
         <WhoToFollow :users="usersToFollow" />
@@ -35,9 +35,6 @@ export default {
     TweetsList
   },
   data: () => ({
-    sampleTweets: [
-      { username: "powerbeast", content: "7 Ways to Train your Brain..." }
-    ],
     trendingTopics: [
       { title: "MLB", subtitle: "2 hours ago" },
       { title: "Anthony Davis", subtitle: "1,032 posts" }

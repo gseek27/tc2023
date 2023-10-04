@@ -1,7 +1,8 @@
 <template>
   <div>
     <div v-for="tweet in sortedTweets" :key="tweet.id">
-      <TweetPost :tweetData="tweet" />
+      {{ console.log(tweet) }}
+      <TweetPost v-if="tweet.content" :tweetData="tweet" @tweetDeleted="handleTweetDeleted" />
     </div>
   </div>
 </template>
@@ -39,8 +40,15 @@ const sortedTweets = computed(() => {
 
 
     return {
-      sortedTweets
+      sortedTweets,
+      tweets
     }
+  },
+  methods: {
+  handleTweetDeleted(tweetId) {
+    this.tweets = this.tweets.filter(tweet => tweet.id !== tweetId);
+  }
+
   }
 };
 </script>
