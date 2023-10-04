@@ -7,10 +7,7 @@
 </template>
 
 <script>
-//import { ref, computed } from 'vue';
-//import { db } from "../firebase"; 
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
-//import { initializeApp } from "firebase/app";
 import { addDoc, collection } from 'firebase/firestore';  // <-- Import FieldValue
 import { serverTimestamp } from 'firebase/firestore';
 import { db } from "/src/firebase/index.js"; // adjust the path according to your project structure
@@ -35,8 +32,7 @@ const firebaseConfig = {
   };
   */
 
-//const app = initializeApp(firebaseConfig);
-//const db = getFirestore(app);
+
 
 export default {
   data() {
@@ -83,7 +79,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-/* Add your styling here */
-</style>

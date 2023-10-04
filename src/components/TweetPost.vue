@@ -17,13 +17,8 @@ export default {
   props: {
     tweetData: {
       type: Object,
-     // default: ''
-           required: true,
+      required: true,
      default: () => ({})  // Default is now an empty object
-      //  username: "bazooka_joe",
-     //   content: "first!",
-     //   profileImage: 'https://source.unsplash.com/random/50x50',
-     //   imageUrl: 'https://source.unsplash.com/random/200x100'
     }
   }
   ,
@@ -39,7 +34,6 @@ export default {
       }
     }
   }
-  //... rest of the component script
 }
 </script>
 

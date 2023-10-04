@@ -19,10 +19,8 @@
 
 
 <script>
-//import { onMounted } from 'vue';
 import SideBar from './components/SideBar.vue';
 import TweetBox from './components/TweetBox.vue';
-//import TweetPost from './components/TweetPost.vue';
 import TrendingPosts from './components/TrendingPosts.vue';
 import WhoToFollow from './components/WhoToFollow.vue';
 import TweetsList from './components/TweetsList.vue';
@@ -32,7 +30,6 @@ export default {
   components: {
     SideBar,
     TweetBox,
-   // TweetPost,
     TrendingPosts,
     WhoToFollow,
     TweetsList
