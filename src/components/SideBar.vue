@@ -11,7 +11,9 @@
 <script>
 export default {
   data: () => ({
-    menuItems: ["Home", "Explore", "Notifications", "Messages", "Lists", "Communities", "Verified Orgs", "Profile", "Bookmarks", "Top Articles"]
+  //  menuItems: ["Home", "Explore", "Notifications", "Messages", "Lists", "Communities", "Verified Orgs", "Profile", "Bookmarks", "Top Articles"]
+      menuItems: ["Home", "Explore", "Notifications", "Messages", "Profile", "Bookmarks"]
+
   })
 }
 </script>

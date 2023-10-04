@@ -1,18 +1,25 @@
 <template>
   <v-container>
+    
     <v-row>
+     
       <v-col cols="3">
         <SideBar />
         <router-view></router-view>
       </v-col>
-      <v-col cols="9">
+     
+      <v-col cols="6">
         <TweetBox @tweetPosted="fetchTweets" />
-       
         <TweetsList :tweets="tweets" @removeTweet="removeTweet" />
-
-        <TrendingPosts :topics="trendingTopics" />
-        <WhoToFollow :users="usersToFollow" />
+     <!--    <TrendingPosts :topics="trendingTopics" /> -->
+   <!--      <WhoToFollow :users="usersToFollow" />  -->
       </v-col>
+
+      <v-col cols="3">
+        <TrendingPosts :topics="trendingTopics" />  
+      <WhoToFollow :users="usersToFollow" /> 
+      </v-col>
+
     </v-row>
   </v-container>
 </template>

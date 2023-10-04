@@ -11,6 +11,7 @@
   
    <!--<video v-if="videoURL" controls preload="auto" playsinline> -->
     <!-- <source :src="videoURL" type="video/mp4"> -->
+
   <!-- Display Video -->
     <video v-if="isVideo(tweetData.imageUrl)" controls preload="auto" playsinline>
       <source :src="tweetData.imageUrl" type="video/mp4">
@@ -66,7 +67,7 @@ export default {
     },
     isVideo(url) {
       // Updated to detect .mp4, .webm, and .ogg anywhere in the URL string
-      return /.*\.(mp4|webm|ogg)/i.test(url);
+      return /.*\.(mp4|webm|ogg|mov)/i.test(url);
     },
     async deleteTweet() {
       try {
