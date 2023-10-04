@@ -1,9 +1,25 @@
 <template>
-  <div>
-    <v-textarea v-model="tweetContent" placeholder="What is happening?!"></v-textarea>
-    <input type="file" @change="onFileChange">
-    <v-btn @click="postTweet">Post</v-btn>
-  </div>
+<v-row>
+    <!-- This column will take the majority of the space -->
+    <v-col cols="12">
+      <v-textarea v-model="tweetContent" placeholder="What is happening?!"></v-textarea>
+       </v-col>
+       </v-row>
+   
+       <v-row>
+       <v-col cols="10">
+      <!-- Upload icon triggering the file input -->
+      <label>
+        <v-icon>mdi-image</v-icon>
+        <input type="file" @change="onFileChange" style="display: none;">
+      </label>
+    </v-col>
+    
+    <!-- This column will be for the Post button -->
+    <v-col cols="1" class="text-end">
+      <v-btn @click="postTweet">Post</v-btn>
+    </v-col>
+  </v-row>
 </template>
 
 <script>

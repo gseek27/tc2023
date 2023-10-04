@@ -11,7 +11,7 @@
     "@firebase/app": "^0.9.19",
     "@firebase/firestore": "^4.2.0",
     "@firebase/storage": "^0.11.2",
-    "@mdi/font": "5.9.55",
+    "@mdi/font": "^5.9.55",
     "axios": "^1.5.1",
     "core-js": "^3.8.3",
     "firebase": "^10.4.0",

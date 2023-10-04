@@ -16,8 +16,10 @@
       </v-col>
 
       <v-col cols="3">
-        <TrendingPosts :topics="trendingTopics" />  
-      <WhoToFollow :users="usersToFollow" /> 
+        <TrendingPosts :topics="trendingTopics" class="sideB" /> 
+         <router-view></router-view> 
+      <WhoToFollow :users="usersToFollow" class="sideB"/> 
+       <router-view></router-view>
       </v-col>
 
     </v-row>
@@ -75,3 +77,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.sideB {
+  margin-bottom: 30px;
+  border: 1px solid #e0e0e0;
+  padding: 0px 10px;
+  margin-top: 0px;
+  border-radius: 5px;
+}
+
+</style>
