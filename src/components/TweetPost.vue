@@ -1,9 +1,11 @@
 <template>
   <div v-if="tweetData.content" class="tweet-post">
-    <v-avatar v-if="actualProfileImage">
-      <img :src="actualProfileImage">
-    </v-avatar>
-    <strong v-if="actualUsername">@{{ actualUsername }}</strong>
+ <router-link :to="{ name: 'profile', params: { username: actualUsername } }">
+      <v-avatar v-if="actualProfileImage">
+        <img :src="actualProfileImage">
+      </v-avatar>
+      <strong v-if="actualUsername">@{{ actualUsername }}</strong>
+    </router-link>
     <p v-if="tweetData.content">{{ tweetData.content }}</p>
 
     <!-- Display media based on its type -->
