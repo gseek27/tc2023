@@ -10,7 +10,8 @@ module.exports = defineConfig({
 })
 module.exports = {
   devServer: {
-    allowedHosts: ['kharels-macbook.local'],
+    host: 'localhost',
+    allowedHosts: ['kharels-macbook.local','localhost'],
   },
 
   pluginOptions: {

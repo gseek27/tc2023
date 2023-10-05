@@ -1,18 +1,15 @@
 <template>
   <div v-if="tweetData.content" class="tweet-post">
-    <v-avatar v-if="tweetData.profileImage">
-      <img :src="tweetData.profileImage">
+    <v-avatar v-if="actualProfileImage">
+      <img :src="actualProfileImage">
     </v-avatar>
-    <strong v-if="tweetData.username">@{{ tweetData.username }}</strong>
+    <strong v-if="actualUsername">@{{ actualUsername }}</strong>
     <p v-if="tweetData.content">{{ tweetData.content }}</p>
 
     <!-- Display media based on its type -->
     <v-img v-if="isImage(tweetData.imageUrl) || isGif(tweetData.imageUrl)" :src="tweetData.imageUrl" aspect-ratio="2"></v-img>
-  
-   <!--<video v-if="videoURL" controls preload="auto" playsinline> -->
-    <!-- <source :src="videoURL" type="video/mp4"> -->
 
-  <!-- Display Video -->
+    <!-- Display Video -->
     <video v-if="isVideo(tweetData.imageUrl)" controls preload="auto" playsinline>
       <source :src="tweetData.imageUrl" type="video/mp4">
       Your browser does not support the video tag.
@@ -23,7 +20,7 @@
 </template>
 
 <script>
-import { getFirestore, doc, deleteDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, deleteDoc } from 'firebase/firestore';
 import { getStorage, ref as storageRef, getDownloadURL } from 'firebase/storage';
 
 export default {
@@ -31,18 +28,21 @@ export default {
     tweetData: {
       type: Object,
       required: true,
-      default: () => ({})  // Default is now an empty object
+      default: () => ({})
     }
   },
   data() {
     return {
-      videoURL: '' // This will be set after fetching from Firebase
+      localTweetData: { ...this.tweetData }, // Create a local copy
+      videoURL: '',
+      actualUsername: '',
+      actualProfileImage: ''
     };
   },
   mounted() {
-    // Assuming `tweetData.imageUrl` contains the path to the video in Firebase Storage
+    // Fetch video URL
     const storagePath = this.tweetData.imageUrl;
-    
+
     if (storagePath) {
       const storage = getStorage();
       const videoRef = storageRef(storage, storagePath);
@@ -55,25 +55,42 @@ export default {
           console.error("Error fetching video URL:", error);
         });
     }
+
+    // Fetch user data
+    this.fetchUserData();
   },
   methods: {
     isImage(url) {
-      // Updated to detect .jpeg, .jpg, .png anywhere in the URL string
       return /.*\.(jpeg|jpg|png)/i.test(url);
     },
-      isGif(url) {
-      // Updated to detect .gif anywhere in the URL string
+    isGif(url) {
       return /.*\.gif/i.test(url);
     },
     isVideo(url) {
-      // Updated to detect .mp4, .webm, and .ogg anywhere in the URL string
       return /.*\.(mp4|webm|ogg|mov)/i.test(url);
     },
+async fetchUserData() {
+  try {
+    const db = getFirestore();
+    const userDocRef = doc(db, 'users', this.localTweetData.userId);
+    const userDocSnapshot = await getDoc(userDocRef);
+
+    if (userDocSnapshot.exists()) {
+      const userData = userDocSnapshot.data();
+      this.actualUsername = userData.username;
+      this.actualProfileImage = userData.profileImage;
+    } else {
+      console.error('User document does not exist');
+    }
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+  }
+},
+
     async deleteTweet() {
       try {
         const db = getFirestore();
-        await deleteDoc(doc(db, "tweets", this.tweetData.id)); // "tweets" should match your collection name
-        // Optionally emit an event to parent component or show a notification
+        await deleteDoc(doc(db, "tweets", this.tweetData.id));
         this.$emit('tweetDeleted', this.tweetData.id);
       } catch (error) {
         console.error("Error deleting tweet:", error);
