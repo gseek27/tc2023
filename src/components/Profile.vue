@@ -16,8 +16,14 @@
           <h1>Your profile page</h1>
 
           <!-- Profile Picture -->
-          <img :src="profileImage" alt="Profile" width="100" v-if="profileImage" />
-          <input type="file" @change="uploadImage" />
+           <v-avatar v-if="profileImage">
+            <img :src="profileImage" alt="Profile" width="100" />
+          </v-avatar>
+          <label>
+            <v-icon>mdi-image</v-icon>
+            <input type="file" @change="onFileChange" style="display: none;">
+          </label>
+
 
           <!-- Username -->
           <p>@{{ username }}</p>
