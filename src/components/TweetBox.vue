@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import { getStorage, ref as storageRef, uploadBytes } from 'firebase/storage';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { collection, addDoc, serverTimestamp, doc, getDoc } from 'firebase/firestore';
 import { db } from '/src/firebase/index.js';
 import { auth } from '/src/firebase/index.js';
 
@@ -41,17 +41,28 @@ export default {
         const user = auth.currentUser;
         if (!user) throw new Error('User not authenticated');
 
+        // Fetch the user's profile data, including the username
+        const profileDoc = await this.fetchUserProfile(user.uid);
+
+        // Ensure that the username is available in the profile
+        if (!profileDoc.exists() || !profileDoc.data().username) {
+          throw new Error('Username is missing');
+        }
+
+        let imageUrl = null;
         if (this.tweetImage) {
           const storage = getStorage();
           const imageRef = storageRef(storage, 'tweets/' + this.tweetImage.name);
           await uploadBytes(imageRef, this.tweetImage);
+          imageUrl = await getDownloadURL(imageRef);
         }
 
-        await this.createTweet(this.tweetContent, user);
+        const username = profileDoc.data().username; // Get the username from the profile
+
+        await this.createTweet(this.tweetContent, user, imageUrl, username);
         this.tweetContent = ''; // Clear the textarea after posting
         this.tweetImage = null;
         this.$emit('tweetPosted');
-        // No need to call fetchTweets here as it's not defined in this component
       } catch (error) {
         console.error('Error posting tweet:', error);
       }
@@ -64,12 +75,17 @@ export default {
       }
     },
 
-    async createTweet(content, user) {
+    async fetchUserProfile(userId) {
+      const profileDocRef = doc(collection(db, 'users'), userId);
+      return await getDoc(profileDocRef);
+    },
+
+    async createTweet(content, user, imageUrl, username) {
       const tweet = {
         content: content,
         timestamp: serverTimestamp(),
         userId: user.uid,
-        username: user.username || '', // Include the username from the user object
+        username: username, // Set the username from the profile
       };
 
       // Only add profileImage to tweet if it's defined
