@@ -32,7 +32,8 @@
           <!-- Submit Button -->
           <button @click="updateProfile">Update Profile</button>
 
-          <TweetsList :tweets="tweets" @removeTweet="removeTweet" />
+          <TweetsList :tweets="tweets" @removeTweet="removeTweet" :key="tweetsUpdateTime" />
+
         </v-col>
 
         <v-col cols="3">
@@ -45,18 +46,10 @@
 </template>
 
 
+
 <script>
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import {
-  getFirestore,
-  collection,
-  doc,
-  getDoc,
-  query,
-  orderBy,
-  getDocs,
-  where
-} from 'firebase/firestore';
+import { getFirestore, collection, doc, getDoc, updateDoc, writeBatch, query, orderBy, getDocs, where } from 'firebase/firestore';
 
 import SideBar from './SideBar.vue';
 import TrendingPosts from './TrendingPosts.vue';
@@ -80,7 +73,10 @@ export default {
       tweets: [],
       loading: true,
       userID: null,
+      tweetsUpdateTime: Date.now(),
       username: '',
+      updatingProfile: false,
+       tempUsername: '',
       profileImage: '',
       trendingTopics: [
         { title: 'MLB', subtitle: '2 hours ago' },
@@ -90,6 +86,58 @@ export default {
     };
   },
   methods: {
+
+  
+        async updateProfile() {
+            try {
+                this.updatingProfile = true;
+
+                const db = getFirestore();
+                const userDocRef = doc(db, 'users', this.userID);
+
+                // Update the username in Firestore
+                await updateDoc(userDocRef, {
+                    username: this.tempUsername
+                });
+
+                // Update username in all the user's tweets
+                await this.updateUsernameInTweets(this.tempUsername);
+
+                // Update the local username property and re-fetch data
+                this.username = this.tempUsername;
+                await this.fetchTweets();
+
+                // Reset the tempUsername property
+                this.tempUsername = '';
+
+            } catch (error) {
+                console.error("Error updating profile:", error);
+                // Handle the error, e.g., show an error message to the user
+            } finally {
+                this.updatingProfile = false;
+            }
+             await this.fetchTweets();
+            this.tweetsUpdateTime = Date.now();
+        },
+
+        async updateUsernameInTweets(newUsername) {
+            const db = getFirestore();
+            const tweetsQuery = query(
+                collection(db, 'tweets'),
+                where('userId', '==', this.userID)
+            );
+
+            const tweetDocs = await getDocs(tweetsQuery);
+
+            const batch = writeBatch(db); // Use a batch to update multiple documents at once
+
+            tweetDocs.forEach((docSnapshot) => {
+                const tweetRef = doc(db, 'tweets', docSnapshot.id);
+                batch.update(tweetRef, { username: newUsername }); // Assuming 'username' is the field's name in tweets
+            });
+
+            await batch.commit();
+        },
     async fetchUserProfile(userId) {
       const db = getFirestore();
       const userDocRef = doc(db, 'users', userId); // Adjust the path as needed

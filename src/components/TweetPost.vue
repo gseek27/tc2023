@@ -27,9 +27,9 @@
       mdi-heart
     </v-icon>
 
-    <!-- Recycle (Retweet) Icon -->
-    <v-icon @click="toggleRecycle" :color="recycled ? 'green' : ''" class="recycle-icon">
-      mdi-recycle
+    <!-- repeat (Retweet) Icon -->
+    <v-icon @click="togglerepeat" :color="repeatd ? 'green' : ''" class="repeat-icon">
+      mdi-repeat
     </v-icon>
 
     <!-- Delete Button (Show if the current user has the same userId) -->
@@ -70,7 +70,7 @@ export default {
       actualUsername: '',
       actualProfileImage: '',
       liked: false,    // Heart icon state
-      recycled: false, // Recycle icon state
+      repeatd: false, // repeat icon state
     };
   },
   mounted() {
@@ -123,8 +123,8 @@ export default {
     toggleLike() {
       this.liked = !this.liked;
     },
-    toggleRecycle() {
-      this.recycled = !this.recycled;
+    togglerepeat() {
+      this.repeatd = !this.repeatd;
     },
     async deleteTweet() {
       try {
@@ -161,7 +161,7 @@ export default {
 }
 
 /* Added specific margin to the icons */
-.heart-icon, .recycle-icon {
+.heart-icon, .repeat-icon {
   margin-right: 100px; /* or adjust to the space you desire */
   color: gray;
 }
