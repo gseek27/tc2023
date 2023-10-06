@@ -14,23 +14,42 @@
         </v-col>
         <v-col cols="6">
           <h1>Your profile page</h1>
+<br>
 
+  <v-row>
           <!-- Profile Picture -->
            <v-avatar v-if="profileImage">
             <img :src="profileImage" alt="Profile" width="100" />
           </v-avatar>
-          <label>
-            <v-icon>mdi-image</v-icon>
-            <input type="file" @change="onFileChange" style="display: none;">
-          </label>
 
 
           <!-- Username -->
-          <p>@{{ username }}</p>
-          <input v-model="tempUsername" placeholder="Choose a username" />
+          <div>&nbsp; @{{ username }}</div>
+    </v-row>
 
-          <!-- Submit Button -->
-          <button @click="updateProfile">Update Profile</button>
+          <br><br><br>
+          
+          <!-- Row for Username input, Image Upload icon, and Update button -->
+          <v-row>
+
+          <!-- Column for Image Upload icon -->
+            <v-col cols="1">
+              <label>
+                <v-icon>mdi-image</v-icon>
+                <input type="file" @change="onFileChange" style="display: none;">
+              </label>
+            </v-col>
+
+            <!-- Column for Username input -->
+            <v-col cols="4">
+              <input v-model="tempUsername" placeholder="Choose a username" />
+            </v-col>
+
+            <!-- Column for Update button -->
+            <v-col cols="3">
+              <button @click="updateProfile">Update Profile</button>
+            </v-col>
+          </v-row>
 
           <TweetsList :tweets="tweets" @removeTweet="removeTweet" :key="tweetsUpdateTime" />
 
