@@ -39,7 +39,7 @@ export default {
     const menuItems = [
       { title: "Home", link: "/" },
       { title: "Profile", link: "/profile" },
-      { title: "Login", link: "/login" },
+    
       { title: "Logout", link: "/login" }
     ];
 

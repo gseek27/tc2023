@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col s12 m8 offset-m2">
           <div class="login card-panel grey lighten-4 black-text center">
-            <h3>Register or Login</h3>
+            <h3>Sign In</h3>
             <form @submit.prevent="registerOrLogin">
               <div class="input-field">
                 <i class="material-icons prefix">email</i>
@@ -16,7 +16,7 @@
                 <input type="password" id="password" v-model="password" />
                 <label for="password"> Enter Password</label>
               </div>
-              <br>
+    
 
             </form>
 
@@ -25,7 +25,7 @@
   <i class="material-icons left">account_circle</i>
   Sign in with Email
 </button>
-
+<br><br>
 <!-- For Google Sign-In -->
 <button v-on:click="registerOrLoginWithGoogle" class="btn btn-large grey lighten-4 black-text">
   <i class="material-icons left">label_outline</i>
@@ -107,7 +107,7 @@ export default {
       createUserWithEmailAndPassword(auth, this.email, this.password)
         .then((user) => {
           alert(`Account created for ${user.user.email}`)
-          this.$router.push('/profile') // Navigate to profile page
+          this.$router.push('/') // Navigate to profile page
         })
         .catch((err) => {
           alert(err.message)
@@ -118,7 +118,7 @@ export default {
       signInWithPopup(auth, provider)
         .then((result) => {
           alert(`Logged in as ${result.user.email}`)
-          this.$router.push('/profile') // Navigate to profile page
+          this.$router.push('/') // Navigate to profile page
         })
         .catch((err) => {
           alert(err.message)
