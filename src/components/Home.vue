@@ -1,32 +1,19 @@
 <template>
   <div>
-    <h1></h1>
-    <p></p>
-  </div>
-
-  <v-row>
-     
+    <v-row>
       <v-col cols="3">
         <SideBar />
-         
       </v-col>
-     
       <v-col cols="6">
-         
         <TweetBox @tweetPosted="fetchTweets" />
-        <TweetsList :tweets="tweets" @removeTweet="removeTweet" />
-     <!--    <TrendingPosts :topics="trendingTopics" /> -->
-   <!--      <WhoToFollow :users="usersToFollow" />  -->
+        <TweetsList :tweets="tweets" :tweetData="tweet" :userId="currentUserId" @removeTweet="removeTweet" />
       </v-col>
-
       <v-col cols="3">
-        <TrendingPosts :topics="trendingTopics" class="sideB" /> 
-        
-      <WhoToFollow :users="usersToFollow" class="sideB"/> 
-        
+        <TrendingPosts :topics="trendingTopics" class="sideB" />
+        <WhoToFollow :users="usersToFollow" class="sideB" />
       </v-col>
-
     </v-row>
+  </div>
 </template>
 
 <script>
@@ -39,7 +26,7 @@ import { getFirestore, collection, getDocs, orderBy, query } from 'firebase/fire
 
 export default {
   name: 'HomePage',
- components: {
+  components: {
     SideBar,
     TweetBox,
     TrendingPosts,
@@ -67,9 +54,11 @@ export default {
       const tweetDocs = await getDocs(tweetsQuery);
       
       this.tweets = tweetDocs.docs.map(doc => {
+        const data = doc.data();
         return {
           id: doc.id,
-          ...doc.data()
+          userId: data.userId, // Include the userId
+          ...data,
         };
       });
       console.log("Fetched tweets in parent:", this.tweets);
@@ -80,7 +69,6 @@ export default {
   }
 }
 </script>
-
 
 <style scoped>
 .sideB {

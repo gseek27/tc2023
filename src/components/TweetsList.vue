@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-for="tweet in sortedTweets" :key="tweet.id">
-      <TweetPost v-if="tweet.content" :tweetData="tweet" @tweetDeleted="handleTweetDeleted" />
+     <div v-for="tweet in sortedTweets" :key="tweet.id">
+      <TweetPost v-if="tweet.content" :tweetData="tweet" :userId="tweet.userId" @tweetDeleted="handleTweetDeleted" />
     </div>
   </div>
 </template>
