@@ -13,7 +13,7 @@
           <SideBar />
         </v-col>
         <v-col cols="6">
-          <h1>Your profile page</h1>
+          
 <br>
 
   <v-row>
@@ -21,13 +21,13 @@
            <v-avatar v-if="profileImage">
             <img :src="profileImage" alt="Profile" width="100" />
           </v-avatar>
-
-
+ </v-row>
+<v-row>
           <!-- Username -->
-          <div>&nbsp; @{{ username }}</div>
+          <strong>@{{ username }}</strong>
     </v-row>
 
-          <br><br><br>
+          <br><br>
           
           <!-- Row for Username input, Image Upload icon, and Update button -->
           <v-row>
@@ -217,4 +217,20 @@ export default {
   margin-top: 0px;
   border-radius: 5px;
 }
+
+/* ... other styles ... */
+
+button {
+    background-color: gray;
+    color: white;
+    padding: 5px 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+
+}
+
 </style>
