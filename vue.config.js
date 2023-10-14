@@ -1,23 +1,3 @@
-const { defineConfig } = require('@vue/cli-service')
-module.exports = defineConfig({
-  transpileDependencies: true,
-
-  pluginOptions: {
-    vuetify: {
-			// https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vuetify-loader
-		}
-  }
-})
-module.exports = {
-  devServer: {
-    host: 'localhost',
-    allowedHosts: ['kharels-macbook.local','localhost'],
-  },
-
-  pluginOptions: {
-    vuetify: {}
-  }
-};
-
-
- 
+version https://git-lfs.github.com/spec/v1
+oid sha256:dc2b174a5d47d91dc14e7e02eaeb78f03008b5b41dd17c599f71413e8c2117a4
+size 412

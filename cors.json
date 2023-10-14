@@ -1,9 +1,3 @@
-[
-  {
-    "origin": ["*"],
-    "method": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    "maxAgeSeconds": 3600,
-    "responseHeader": ["*"],
-    "requestHeader": ["Content-Type", "Authorization", "Content-Length", "User-Agent", "x-firebase-storage-version", "x-goog-request-id", "x-goog-api-version", "x-goog-upload-protocol", "Content-Range", "X-Firebase-Storage-XSRF"]
-  }
-]
+version https://git-lfs.github.com/spec/v1
+oid sha256:4c1b3d687bd3d9532f8278cdb0299d363e8e1137444d95b4cb5b4484f8513319
+size 378
