@@ -1,9 +1,0 @@
-[
-  {
-    "origin": ["*"],
-    "method": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    "maxAgeSeconds": 3600,
-    "responseHeader": ["*"],
-    "requestHeader": ["Content-Type", "Authorization", "Content-Length", "User-Agent", "x-firebase-storage-version", "x-goog-request-id", "x-goog-api-version", "x-goog-upload-protocol", "Content-Range", "X-Firebase-Storage-XSRF"]
-  }
-]
