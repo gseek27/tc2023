@@ -1,25 +1,3 @@
-#!/usr/bin/env sh
-
-# abort on errors
-set -e
-
-# build
-npm run build
-
-# navigate into the build output directory
-cd dist
-
-# if you are deploying to a custom domain
-# echo 'itslit.app' > CNAME
-
-git init
-git add -A
-git commit -m 'deploy'
-
-# if you are deploying to https://<USERNAME>.github.io
-# git push -f git@github.com:gseek27/gseek27.github.io.git master
-
-# if you are deploying to https://<USERNAME>.github.io/<REPO>
- git push -f git@github.com:gseek27/tc2023.git master:gh-pages
-
-cd -
+version https://git-lfs.github.com/spec/v1
+oid sha256:6257cdae51e71e48582eb71b82688f88e266913fc815d78b7fbd0a66c6855003
+size 485
