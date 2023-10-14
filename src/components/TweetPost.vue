@@ -36,6 +36,17 @@
     </video>
 
     <div class="actions-row">
+
+     <!--  Comment Icon -->
+      <v-icon
+        @click="toggleComment"
+        :color="tweetData.commented ? 'blue' : 'gray'"
+        class="comment-icon"
+      >
+        mdi-comment
+      </v-icon>
+
+
       <!-- Heart (Like) Icon -->
       <v-icon
         @click="toggleLike"
@@ -162,6 +173,16 @@ export default {
         status: newStatus,
       })
     },
+    async toggleComment() {
+      const db = getFirestore()
+      const tweetRef = doc(db, 'tweets', this.tweetData.id)
+      const newStatus = !this.tweetData.commented
+      await updateDoc(tweetRef, { commented: newStatus })
+      this.$emit('tweetCommentedStatusUpdated', {
+        tweetId: this.tweetData.id,
+        status: newStatus,
+      })
+    },
     async deleteTweet() {
       try {
         const db = getFirestore()
@@ -194,7 +215,8 @@ export default {
   margin-top: 20px;
 }
 .heart-icon,
-.repeat-icon {
+.repeat-icon,
+.comment-icon {
   margin-right: 20px;
 }
 .actions-row > *:last-child {

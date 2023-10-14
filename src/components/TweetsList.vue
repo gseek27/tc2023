@@ -6,6 +6,7 @@
         :tweetData="tweet"
         @tweetLikedStatusUpdated="$emit('tweetLikedStatusUpdated', $event)"
         @tweetRepeatStatusUpdated="$emit('tweetRepeatStatusUpdated', $event)"
+        @tweetCommentedStatusUpdated="$emit('tweetCommentedStatusUpdated', $event)"
         :userId="tweet.userId"
         @tweetDeleted="handleTweetDeleted"
       />
@@ -40,6 +41,12 @@ export default {
     }
   },
   methods: {
+  updateTweetCommentedStatus({ tweetId, status }) {
+      const tweetToUpdate = this.tweets.find((tweet) => tweet.id === tweetId)
+      if (tweetToUpdate) {
+        tweetToUpdate.commented = status
+      }
+    },
     updateTweetLikedStatus({ tweetId, status }) {
       const tweetToUpdate = this.tweets.find((tweet) => tweet.id === tweetId)
       if (tweetToUpdate) {
@@ -49,7 +56,7 @@ export default {
     updateTweetRepeatStatus({ tweetId, status }) {
       const tweetToUpdate = this.tweets.find((tweet) => tweet.id === tweetId)
       if (tweetToUpdate) {
-        tweetToUpdate.repeatd = status
+        tweetToUpdate.repeated = status
       }
     },
     handleTweetDeleted(tweetId) {

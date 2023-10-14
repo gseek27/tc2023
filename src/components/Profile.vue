@@ -54,6 +54,7 @@
           <TweetsList
             :tweets="tweets"
             @tweetLikedStatusUpdated="updateTweetLikedStatus"
+            @tweetCommentedStatusUpdated="updateTweetCommentedStatus"
             @tweetRepeatStatusUpdated="updateTweetRepeatStatus"
             @removeTweet="removeTweet"
             :key="tweetsUpdateTime"
@@ -119,6 +120,12 @@ export default {
       const tweetToUpdate = this.tweets.find((tweet) => tweet.id === tweetId)
       if (tweetToUpdate) {
         tweetToUpdate.liked = status
+      }
+    },
+    updateTweetCommentedStatus({ tweetId, status }) {
+      const tweetToUpdate = this.tweets.find((tweet) => tweet.id === tweetId)
+      if (tweetToUpdate) {
+        tweetToUpdate.commented = status
       }
     },
     updateTweetRepeatStatus({ tweetId, status }) {

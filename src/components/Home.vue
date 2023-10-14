@@ -13,6 +13,7 @@
           @removeTweet="removeTweet"
           @tweetLikedStatusUpdated="updateTweetLikedStatus"
           @tweetRepeatStatusUpdated="updateTweetRepeatStatus"
+          @tweetCommentedStatusUpdated="updateTweetCommentedStatus"
         />
       </v-col>
       <v-col cols="3">
@@ -59,6 +60,12 @@ export default {
       const tweetToUpdate = this.tweets.find((tweet) => tweet.id === tweetId)
       if (tweetToUpdate) {
         tweetToUpdate.liked = status
+      }
+    },
+    updateTweetCommentedStatus({ tweetId, status }) {
+      const tweetToUpdate = this.tweets.find((tweet) => tweet.id === tweetId)
+      if (tweetToUpdate) {
+        tweetToUpdate.commented = status
       }
     },
     updateTweetRepeatStatus({ tweetId, status }) {
