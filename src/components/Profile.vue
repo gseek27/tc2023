@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:57cdb1cfd7dde3255801cdad80f6968fd748b6a430ba73d25b7183a16f157bc2
-size 6968
-=======
 <template>
     <div>
       <v-row v-if="loading">
@@ -258,7 +253,5 @@ size 6968
     transition: background-color 0.3s ease;
   }
   
-  button:hover {
-  }
-  </style>  
->>>>>>> 2190573f (wed14)
+
+  </style>
