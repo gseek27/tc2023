@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:69976e302ff2fe62e75e2d5e711b01e5b5154df4a91d1f45324f6083a10978a7
-size 2998
-=======
-=======
->>>>>>> faea81d2 (Fix git fls errors)
+
 <template>
     <v-row>
       <!-- This column will take the majority of the space -->
@@ -120,9 +113,4 @@ size 2998
       },
     },
   }
-<<<<<<< HEAD
   </script>
->>>>>>> 2190573f (wed14)
-=======
-  </script>
->>>>>>> faea81d2 (Fix git fls errors)

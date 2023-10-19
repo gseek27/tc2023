@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:50ac3a0b344b515c92ba35ef75f4abd37bc9701c826eb14d1f8347c02c3d90a8
-size 490
-=======
-=======
->>>>>>> faea81d2 (Fix git fls errors)
+
 <template>
     <div>
       <v-subheader>Who to follow</v-subheader>
@@ -28,9 +21,4 @@ size 490
       users: Array
     }
   }
-<<<<<<< HEAD
-  </script>  
->>>>>>> 2190573f (wed14)
-=======
-  </script>  
->>>>>>> faea81d2 (Fix git fls errors)
+  </script> 

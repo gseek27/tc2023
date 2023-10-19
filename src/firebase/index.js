@@ -57,8 +57,4 @@ const auth = getAuth(app)
 
 setPersistence(auth, browserLocalPersistence)
 
-<<<<<<< HEAD
 export { db, auth }
-=======
-export { db, auth }
->>>>>>> faea81d2 (Fix git fls errors)
