@@ -1,8 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 version https://git-lfs.github.com/spec/v1
 oid sha256:76d1efba57af71a19f741c7dd30f3def46267d35f794d4a12a586ded28505a74
 size 468
 =======
+=======
+>>>>>>> faea81d2 (Fix git fls errors)
 const { defineConfig } = require('@vue/cli-service')
 
 module.exports = defineConfig({
@@ -25,5 +28,9 @@ module.exports = defineConfig({
     vuetify: {}
   }
 
+<<<<<<< HEAD
 })
 >>>>>>> 2190573f (wed14)
+=======
+})
+>>>>>>> faea81d2 (Fix git fls errors)

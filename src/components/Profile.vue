@@ -253,5 +253,11 @@
     transition: background-color 0.3s ease;
   }
   
+<<<<<<< HEAD
 
   </style>
+=======
+  button:hover {
+  }
+  </style>  
+>>>>>>> faea81d2 (Fix git fls errors)

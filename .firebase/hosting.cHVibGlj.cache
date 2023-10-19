@@ -1,10 +1,16 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 version https://git-lfs.github.com/spec/v1
 oid sha256:28482dd0a66b5cf041d8a3b4fffa126f1a8c437ccc1c69ff21ad6a813e624a31
 size 358
 =======
+=======
+>>>>>>> faea81d2 (Fix git fls errors)
 favicon.ico,1696141618588,1e71457865f706dc865b49a54a86e193818220d290b30226b6630a42faf1535d
 404.html,1696206941934,05cbc6f94d7a69ce2e29646eab13be2c884e61ba93e3094df5028866876d18b3
 index.html,1696164033632,6779c2740080ecf0f0afdc73edf451a64bf8aa4885f1c97b5bc9b6348840d89b
 style.css,1696163311795,66563a00c35bae17c85d25362b8f62f8b4f110ae6cc6de42aaf39831c17cb5de
+<<<<<<< HEAD
 >>>>>>> 2190573f (wed14)
+=======
+>>>>>>> faea81d2 (Fix git fls errors)

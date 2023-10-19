@@ -1,8 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 version https://git-lfs.github.com/spec/v1
 oid sha256:815e8ee331097d117801601b3fad0abc2a44dacde4bbdef75e2284219a0a66ca
 size 1119
 =======
+=======
+>>>>>>> faea81d2 (Fix git fls errors)
 <template>
     <v-list> 
       <div> 
@@ -55,5 +58,9 @@ size 1119
     }
   }
   </script>
+<<<<<<< HEAD
   
 >>>>>>> 2190573f (wed14)
+=======
+  
+>>>>>>> faea81d2 (Fix git fls errors)
