@@ -1,0 +1,117 @@
+/* X-Small devices (portrait phones, less than 576px) */
+.v-row>* {
+    flex-shrink: 0!important;
+    width: 100%!important;
+    max-width: 100%!important;
+}
+
+.v-col-1,
+.v-col-2,
+.v-col-3, 
+.v-col-4, 
+.v-col-5, 
+.v-col-6, 
+.v-col-7, 
+.v-col-8, 
+.v-col-9, 
+.v-col-10, 
+.v-col-11, 
+.v-col-12 {
+    width: 100%;
+    flex: unset!important;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+
+    .v-col-3 {
+        flex: 0 0 25%!important;
+        max-width: 25%!important;
+    }
+
+    .v-col-6 {
+        flex: 0 0 50%!important;
+        max-width: 50%!important;
+    }
+
+    .v-col-12 {
+        flex: 0 0 100%!important;
+        max-width: 100%!important;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+
+    .v-col-3 {
+        flex: 0 0 25%!important;
+        max-width: 25%!important;
+    }
+
+    .v-col-6 {
+        flex: 0 0 50%!important;
+        max-width: 50%!important;
+    }
+
+    .v-col-12 {
+        flex: 0 0 100%!important;
+        max-width: 100%!important;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+    .v-col-3 {
+        flex: 0 0 25%!important;
+        max-width: 25%!important;
+    }
+
+    .v-col-6 {
+        flex: 0 0 50%!important;
+        max-width: 50%!important;
+    }
+
+    .v-col-12 {
+        flex: 0 0 100%!important;
+        max-width: 100%!important;
+    }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+    .v-col-3 {
+        flex: 0 0 25%!important;
+        max-width: 25%!important;
+    }
+
+    .v-col-6 {
+        flex: 0 0 50%!important;
+        max-width: 50%!important;
+    }
+
+    .v-col-12 {
+        flex: 0 0 100%!important;
+        max-width: 100%!important;
+    }
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) { 
+
+    .v-col-3 {
+        flex: 0 0 25%!important;
+        max-width: 25%!important;
+    }
+
+    .v-col-6 {
+        flex: 0 0 50%!important;
+        max-width: 50%!important;
+    }
+
+    .v-col-12 {
+        flex: 0 0 100%!important;
+        max-width: 100%!important;
+    }
+}

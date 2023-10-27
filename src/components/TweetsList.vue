@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:9aec2dd7acaa1ddf816c2a10cf818d038e4ed6e96de8e93585db6cb6011a7e85
-size 1809
-=======
-=======
->>>>>>> faea81d2 (Fix git fls errors)
+
 <template>
     <div>
       <div v-for="tweet in sortedTweets" :key="tweet.id">
@@ -74,9 +67,3 @@ size 1809
     },
   }
   </script>
-<<<<<<< HEAD
-  
->>>>>>> 2190573f (wed14)
-=======
-  
->>>>>>> faea81d2 (Fix git fls errors)

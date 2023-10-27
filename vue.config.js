@@ -1,24 +1,17 @@
-
-const { defineConfig } = require('@vue/cli-service')
-
-module.exports = defineConfig({
+module.exports = {
   transpileDependencies: true,
-
-  pluginOptions: {
-    vuetify: {
-			// https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vuetify-loader
-		}
-  }, 
-  publicPath: process.env.NODE_ENV === 'production'
-  ? '/tc2023/'
-  : '/',
+  
+  publicPath: process.env.NODE_ENV === 'production' ? '/tc2023/' : '/',
+  
   devServer: {
     host: 'localhost',
-    allowedHosts: ['kharels-macbook.local','localhost']
+    allowedHosts: ['kharels-macbook.local', 'localhost'],
+    before: (app) => {
+      app.use('/static', require('./middleware/serveCSS'));
+    }
   },
-
+  
   pluginOptions: {
     vuetify: {}
   }
-
-})
+};

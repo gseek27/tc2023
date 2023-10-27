@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:19e800db651aa69b2786ffab402d8b657755c21bafafccbad0f3ee8f45e8e041
-size 5465
-=======
-=======
->>>>>>> faea81d2 (Fix git fls errors)
+
 <template>
     <div class="tweet-post">
       <router-link
@@ -231,9 +224,3 @@ size 5465
     margin-right: 0;
   }
   </style>
-<<<<<<< HEAD
-  
->>>>>>> 2190573f (wed14)
-=======
-  
->>>>>>> faea81d2 (Fix git fls errors)
