@@ -6,8 +6,8 @@ module.exports = {
   devServer: {
     host: 'localhost',
     allowedHosts: ['kharels-macbook.local', 'localhost'],
-    before: (app) => {
-      app.use('/static', require('./middleware/serveCSS'));
+    onBeforeSetupMiddleware: (server) => {
+      server.app.use('/static', require('./middleware/serveCSS'));
     }
   },
   
