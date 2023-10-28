@@ -13,8 +13,8 @@ router.get('/styles.css', (req, res) => {
 });
 
 // Serve the styles.css file with the correct Content-Type
-router.get('/css/responsive.css', (req, res) => {
-    const filePath = path.join(__dirname, '../css/responsive.css');
+router.get('responsive.css', (req, res) => {
+    const filePath = path.join(__dirname, '../public/responsive.css');
     res.setHeader('Content-Type', 'text/css');
     res.sendFile(filePath);
 });
